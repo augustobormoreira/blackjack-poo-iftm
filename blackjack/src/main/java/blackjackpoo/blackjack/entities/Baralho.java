@@ -7,8 +7,6 @@ public class Baralho {
 	private int proxCarta = 0;
 	
 	public void baralho() {
-		String [] naipes = {"Copas","Espadas", "Ouros", "Paus"}; 
-		String [] valores = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 		
 		int montante = 0;
 		
@@ -35,10 +33,31 @@ public class Baralho {
 		cartas[montante++] = new Card(10, Suits.DIAMONDS, ""); //K de ouros
 		cartas[montante++] = new Card(10, Suits.CLUBS, ""); //K de paus
 		
-		cartas[montante++] = new Card(11, Suits.SPADES, ""); //Às de espadas
-		cartas[montante++] = new Card(11, Suits.HEARTS, ""); //Às de copas
+		cartas[montante++] = new Card(11, Suits.SPADES, "");   //Às de espadas
+		cartas[montante++] = new Card(11, Suits.HEARTS, "");   //Às de copas
 		cartas[montante++] = new Card(11, Suits.DIAMONDS, ""); //Às de ouros
-		cartas[montante++] = new Card(11, Suits.CLUBS, ""); //Às de paus
 		
+		embaralhar();
+}
+	
+	public void embaralhar() {
+		Random r = new Random();
+		for(int i = 0; i < cartas.length; i++) {
+			int j = r.nextInt(cartas.length);
+			Card temp = cartas[i];
+			cartas[i] = cartas[j];
+			cartas[j] = temp;
+		}
+	}
+	
+	public Card puxarCarta() {
+		if(proxCarta >= cartas.length) {
+			throw new IllegalStateException("Baralho não tem nada!");
+		}
+		return cartas[proxCarta ++];
+	}
+	
+	public boolean temCartas() {
+		return proxCarta < cartas.length;
 	}
 }
