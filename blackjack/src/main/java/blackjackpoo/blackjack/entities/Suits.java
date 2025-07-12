@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
-package blackjackpoo.blackjack.entities;
+package Modelo;
 
-/**
- *
- * @author Gustim
- */
-public enum Suits {
-    hearts, diamonds, clubs, spades
+public enum Suits { // peguei a ideia de um video de um gringo, se quiser que eu tiro é só falar;
+	HEARTS,
+	DIAMONDS,
+	CLUBS,
+	SPADES;
+	
+public String toString() {
+	switch(this) {
+		case HEARTS: return "copas";
+		case DIAMONDS: return "ouros";
+		case CLUBS: return "paus";
+		case SPADES: return "espadas";
+		default: return "";
+		}
+	}
+
 }
